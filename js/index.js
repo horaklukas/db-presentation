@@ -4,6 +4,9 @@ Reveal.initialize({
   progress: true,
   history: true,
   center: true,
+  width: '90%',
+  height: '100%',
+  slideNumber: true,
 
   theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
   transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none

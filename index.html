@@ -16,6 +16,18 @@
   <style type="text/css">
     .slides{
       font-family: Arial, sans-serif !important;
+      font-size: 150% !important;
+    }
+    .main h2{
+      margin-bottom: 50px;
+      line-height: 1.05em;
+    }
+    .main p {
+      margin-top: 50px;
+    }
+    .slide-number {
+      font-size: 16px !important;
+      font-weight: bold !important;
     }
   </style>
   <!-- If the query includes 'print-pdf', include the PDF print sheet -->
@@ -39,7 +51,7 @@
   <!-- Slides  content to be added here -->
   <div class="reveal">
     <div class="slides">
-      <section>
+      <section class="main">
         <h2>Databázový modeler na bázi Node.js</h2>
         <h4>Horák Lukáš</h4>
         <h4>k-ai2</h4>
@@ -51,24 +63,24 @@
         <ul>
           <li>Modelování jako důležitá součást SW vývoje</li>
           <li>Motivace k vytvoření webového modeleru => sdílení návrhu</li>
-          <li>SW nástroje použité pro tvorbu</li>
-          <li>Potřebné znalosti z oblasti relačních databází</li>
+          <li>Praktická část: vytvoření modeleru</li>
+          <li>Teoretická část: vývoj, použité SW nástroje, potřebné znalosti z oblasti relačních databází</li>
         </ul>
       </section>
 
       <section>
         <h3>Cílová aplikace <!--Cíle--></h3>
         <ul>
-          <li>Jednoduché ovládání</li>
+          <li>Navržena s jednoduchým ovládáním</li>
           <li>Webová aplikace = více způsobů použití</li>
-          <li>Různé možnosti vstupů/výstupů</li>
+          <li>Možnosti příjímání různých vstupů, produkování výstupů</li>
         </ul>
       </section>
 
       <section>
         <h3>Existující řešení <!--Teoretická východiska--></h3>
         <ul>
-          <li>Různé parametry (cena, vlastnosti, platforma)</li>
+          <li>Různé parametry pro porovnání (cena, vlastnosti, platforma)</li>
           <li>Pro konkrétní RDBS (MySQL Workbench)</li>
           <li>Komplexní nástroje pro modelování (Enterprise Architect)</li>
           <li>Online modelery (Vertabelo)</li>
@@ -82,7 +94,7 @@
           <h3>Technologie <!--Použité metody řešení--></h3>
           <ul>
             <li>Základem je platforma Node.js</li>
-            <li>Nástroje pro vývoj založené na Node.js</li>
+            <!--li>Nástroje pro vývoj založené na Node.js</li-->
             <li>Komunikace pomocí WebSockets</li>
             <li>Closure Tools od Google</li>
             <li>Knihovna React.js od Facebooku</li>
@@ -94,15 +106,23 @@
             <li>Výkonná serverová platforma s asynchronní I/O modelem</li>
             <li>Základ pro mnoho vývojových nástrojů (Mocha, Stylus,..)</li>
             <li>Jednotný jazyk pro klienta i server - modularita a sdílení</li>
-            <li>Nativní správce modulů (balíčků)</li>
+            <li>NPM - nativní správce modulů</li>
           </ul>
         </section>
         <section>
           <h3>CoffeeScript a Stylus</h3>
           <ul>
-            <li>Javascriptový překladač a css preprocesor</li>
-            <li>Řeší některé nedostatky standardů (ECMAScript 5, CSS2)</li> 
-            <li>Psaní méně "upovídaného" kódu = lepší čitelnost</li>
+            <li>Javascriptový překladač a CSS preprocesor</li>
+            <li>Řeší některé nedostatky starších standardů (ECMAScript5, CSS2)</li> 
+            <li>Psaní méně "upovídaného" kódu = lepší čitelnost + menší zdrojové soubory</li>
+          </ul>
+        </section>
+        <section>
+          <h3>Externí knihovny</h3>
+          <ul>
+            <li>Google Closure tools = sada nástrojů (překladač, knihovna, linter)</li>
+            <li>Closure Library - dependency managment + spousta funkcionality (DOM, ...)</li>
+            <li>React.JS - malé grafické komponenty, rychlost aktualizace</li>
           </ul>
         </section>
       </section>
@@ -112,9 +132,11 @@
         <h3>Výsledná aplikace <!--Výsledky řešení--></h3>
         <ul>
           <li>SPA - komunikace pomocí AJAX, Websockets</li>
-          <li>Automatizované vývojové prostředí</li>
-          <li>Klientské a serverové závislosti (NPM, Bower)</li>
+          <li>Vlastní kód + klientské a serverové závislosti (NPM, Bower)</li>
           <li>Export modelu i s aplikací</li>
+          <li>Použití existujícího DB schematu pro tvorbu modelu (RE)</li>
+          <li>Verzování modelů databázového schematu</li>
+          <!--li>Automatizované vývojové prostředí (Grunt)</li-->
         </ul>
       </section>
 
@@ -122,19 +144,19 @@
         <h3>Serverová část</h3>
         <ul>
           <li>Funkce webového serveru (Express.js)</li>
-          <li>Abstrakce pro Websockets (Socket.io)</li>
-          <li>Dynamické definice RDBS</li>
-          <li>Verzování modelů na souborový systém</li>
+          <li>Komunikace s klientem pomocí Websockets (Socket.io)</li>
+          <li>Dynamické definice cílových typů RDBS</li>
           <li>Třídy pro reverse engineering z různých RDBS</li>
+          <li>Správa verzí modelů na souborovém systému</li>
         </ul>
       </section>
 
       <section>
         <h3>Klientská část</h3>
         <ul>
-          <li>Jednoduché GUI (pracovní plocha, nástrojová lišta, dialogy)</li>
-          <li>Provázanost objektů modelu pro interaktivní změny</li>
-          <li>Exportovaný mód aplikace, ukládání do LocalStorage</li>
+          <li>Nekomplikované GUI, tvořeno HTML + SVG (pracovní plocha, nástrojová lišta, dialogy)</li>
+          <li>Provázanost objektů v modelu pro interaktivní změny</li>
+          <li>Speciální mód  - exportovaná aplikace - ukládání do LocalStorage</li>
         </ul>
       </section>
 
@@ -142,15 +164,15 @@
         <h3>Zhodnocení výsledků</h3>
         <ul>
           <li>Výsledná aplikace dostupná v cloudu Heroku i na Githubu</li>
-          <li>Problémy při tvorbě (tabulka - relace, výchozí schema)</li> 
-          <li>Poznatky z testování ve firmě Retia</li>
+          <li>Vyřešeny problémy vzniklé při vývoji (tabulka - vztah, výchozí schema)</li> 
+          <li>Poznatky a návrhy z testování ve firmě Retia</li>
         </ul>
       </section>
 
       <section>
         <h3>Závěr</h3>
         <ul>
-          <li>Použitelná, dále se rozvíjející, aplikace</li>
+          <li>Výsledkem použitelná, dále se rozvíjející, aplikace</li>
           <li>Nasazení do reálného provozu</li>
           <li>Načerpané praktické znalosti z oblasti relačních databází</li>
         </ul>
